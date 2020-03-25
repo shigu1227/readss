@@ -30,11 +30,7 @@ class IndexController extends Controller
         header('Location:'.$url);
     }
     public function login(){
-        echo $_GET['code'];
-    }
-    //微信接口
-    public function wx(){
-        $code=$_GET['echostr'];
+        $code=$_GET['code'];
         $appid='wxb48cca98c04caf2a';
         $se='57b0c72a414a0152ac64b3378a8ef2e0';
         $url='https://api.weixin.qq.com/sns/oauth2/access_token?appid='.$appid.'&secret='.$se.'&code='.$code.'&grant_type=authorization_code';
@@ -46,5 +42,10 @@ class IndexController extends Controller
         $user_get=file_get_contents($user_url);
         $user_arr=json_decode($user_get,true);
         dump($user_arr);
+    }
+    //微信接口
+    public function wx(){
+        echo $_GET['echostr'];
+        
     }
 }
