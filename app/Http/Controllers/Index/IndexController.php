@@ -34,6 +34,17 @@ class IndexController extends Controller
     }
     //微信接口
     public function wx(){
-        echo $_GET['echostr'];
+        $code=$_GET['echostr'];
+        $appid='wxb48cca98c04caf2a';
+        $se='57b0c72a414a0152ac64b3378a8ef2e0';
+        $url='https://api.weixin.qq.com/sns/oauth2/access_token?appid='.$appid.'&secret='.$se.'&code='.$code.'&grant_type=authorization_code';
+        $get=file_get_contents($url);
+        $arr=json_decode($get,true);
+        $token=$arr['access_token'];
+        $openid=$arr['openid'];
+        $user_url='https://api.weixin.qq.com/sns/userinfo?access_token='.$token.'&openid='.$openid.'&lang=zh_CN';
+        $user_get=file_get_contents($user_url);
+        $user_arr=json_decode($user_get,true);
+        dump($user_arr);
     }
 }
