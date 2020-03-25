@@ -8,7 +8,7 @@ use QRcode;
 
 class IndexController extends Controller
 {
-    //首页
+    //二维码展示页面
     public function index(){
         return view('index.index');
     }
@@ -23,7 +23,13 @@ class IndexController extends Controller
     }
 
     public function imag(){
-        $uid=input('uid');
-        echo $uid;
+        $uid=$_GET['uid'];
+        $appid='wxb48cca98c04caf2a';
+        $uri=urlencode("http://read.bianaoao.top/login");
+        $url ="https://open.weixin.qq.com/connect/oauth2/authorize?appid=$appid&redirect_uri=$uri&response_type=code&scope=snsapi_userinfo&state=$uid#wechat_re";
+        header('Location:'.$url);
+    }
+    public function login(){
+        echo $_GET['code'];
     }
 }
