@@ -12,6 +12,10 @@ class IndexController extends Controller
     public function index(){
         return view('index.index');
     }
+    public function logins(){
+        $name=$_POST['name'];
+        $pwd=$_POST['pwd'];
+    }
     public function loginlist(){
         return view('index.loginlist');
     }
