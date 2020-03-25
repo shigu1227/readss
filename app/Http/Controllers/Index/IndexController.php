@@ -18,7 +18,7 @@ class IndexController extends Controller
       include($url);
       $obj = new QRcode();
       $uid=uniqid();
-      $url_s="http://read.com/imag?uid=".$uid;
+      $url_s="http://read.bianaoao.top/imag?uid=".$uid;
       $obj->png($url_s,storage_path('app/public/1.png')); 
     }
 
