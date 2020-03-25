@@ -11,6 +11,12 @@
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('index','Index\IndexController@index');
+
+Route::get('wxre','Index\IndexController@wxre');
+Route::get('imag','Index\IndexController@imag');
+
