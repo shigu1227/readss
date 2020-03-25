@@ -12,7 +12,10 @@ class IndexController extends Controller
     public function index(){
         return view('index.index');
     }
-    //微信二维码
+    public function loginlist(){
+        return view('index.loginlist');
+    }
+    //微信二维码生成
     public function wxre(){
       $url =  storage_path('app/public/phpqrcode.php');
       include($url);
@@ -21,6 +24,7 @@ class IndexController extends Controller
       $url_s="http://read.bianaoao.top/imag?uid=".$uid;
       $obj->png($url_s,storage_path('app/public/1.png')); 
     }
+
 
     public function imag(){
         $uid=$_GET['uid'];
@@ -43,9 +47,8 @@ class IndexController extends Controller
         $user_arr=json_decode($user_get,true);
         dump($user_arr);
     }
-    //微信接口
+    //微信接口配置
     public function wx(){
         echo $_GET['echostr'];
-        
     }
 }
