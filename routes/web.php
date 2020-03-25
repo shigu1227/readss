@@ -19,4 +19,4 @@ Route::get('index','Index\IndexController@index');
 Route::get('login','Index\IndexController@login');
 Route::get('wxre','Index\IndexController@wxre');
 Route::get('imag','Index\IndexController@imag');
-
+Route::get('wx','Index\IndexController@wx');

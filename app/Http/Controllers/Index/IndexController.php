@@ -32,4 +32,8 @@ class IndexController extends Controller
     public function login(){
         echo $_GET['code'];
     }
+    //微信接口
+    public function wx(){
+        echo $_GET['echostr'];
+    }
 }
