@@ -40,6 +40,12 @@ class IndexController extends Controller
             }
         }
     }
+    public function wxs(){
+        $log_file="wx.log";
+        $xml_str=file_get_contents("php://input");
+        $data=date('Y-m-d H:i:s',time()).$xml_str;
+        file_put_contents($log_file,$data,FILE_APPEND);
+    }
     public function ajaxre($arr=[]){
        $str=Redis::get('str');
        echo $str??'';

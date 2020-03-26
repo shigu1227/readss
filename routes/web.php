@@ -20,6 +20,8 @@ Route::get('login','Index\IndexController@login');
 Route::get('wxre','Index\IndexController@wxre');
 Route::get('imag','Index\IndexController@imag');
 Route::get('wx','Index\IndexController@wx');
+Route::post('wx','Index\IndexController@wxs');
+
 Route::get('index/login','Index\IndexController@loginlist');
 Route::post('index/logins','Index\IndexController@logins');
 Route::get('index/ajaxre','Index\IndexController@ajaxre');
