@@ -18,7 +18,7 @@ class IndexController extends Controller
     }
     public function ajaxre($arr=[]){
     //   /  $uid=request()->input('user_id');
-        if(emoty($arr)){
+        if(empty($arr)){
             return;
         }
         $openid=$arr['openid'];
