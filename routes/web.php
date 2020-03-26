@@ -24,3 +24,10 @@ Route::get('index/login','Index\IndexController@loginlist');
 Route::post('index/logins','Index\IndexController@logins');
 Route::get('index/ajaxre','Index\IndexController@ajaxre');
 
+//login控制器
+Route::post('login/yan','Index\LoginController@yan');
+Route::get('login/reg','Index\LoginController@reglist');
+Route::post('login/regins','Index\LoginController@regins');
+
+
+
