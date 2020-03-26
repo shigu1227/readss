@@ -18,8 +18,8 @@ class IndexController extends Controller
     }
     public function ajaxre($val=''){
         $uid=request()->input('user_id');
-        $key=md5($uid);
-        $names=Redis::get($key);
+        // $key=md5($uid);
+        $names=Redis::get($uid);
         if($names){
             echo $names;
         }
@@ -64,8 +64,8 @@ class IndexController extends Controller
         $user_get=file_get_contents($user_url);
         $user_arr=json_decode($user_get,true);
         $uid=$this->wxre();
-        $key=md5($uid);
-        Redis::set($key,1);
+        // $key=md5($uid);
+        Redis::set($uid,1);
         return view('index.loglist');
     }
     public function val(){
