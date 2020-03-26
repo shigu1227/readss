@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Index;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use QRcode;
-
+use Illuminate\Support\Facades\Redis;
 class IndexController extends Controller
 {
     //首页
@@ -17,8 +17,14 @@ class IndexController extends Controller
         $pwd=$_POST['pwd'];
     }
     public function ajaxre($val=''){
-        $name=$_GET['name']??'';
-        echo $name;
+        $uid=request()->input('user_id');
+        $key=md5($uid);
+        $names=Redis::get($key);
+        if($names){
+            echo $names;
+        }
+        // $name=$_GET['name']??'';
+        // echo $name;
      
     }
     //登录展示页面
@@ -57,6 +63,9 @@ class IndexController extends Controller
         $user_url='https://api.weixin.qq.com/sns/userinfo?access_token='.$token.'&openid='.$openid.'&lang=zh_CN';
         $user_get=file_get_contents($user_url);
         $user_arr=json_decode($user_get,true);
+        $uid=$this->wxre();
+        $key=md5($uid);
+        Redis::set($key,1);
         return view('index.loglist');
     }
     public function val(){
