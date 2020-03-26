@@ -17,17 +17,14 @@ class IndexController extends Controller
         $pwd=$_POST['pwd'];
     }
     public function ajaxre($user_arr=[]){
+        $name=$_GET['name']??'';
+        if($name==1){
+            echo '2';
+        }
         $uid=request()->input('user_id')??'';
         if($uid){
             echo '1';
         }
-        $name=$_POST['name']??'';
-        if($name==1){
-            echo '2';
-        }
-       
-        
-       
     }
     //登录展示页面
     public function loginlist(){
