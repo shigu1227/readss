@@ -56,7 +56,7 @@
 			                        </div>
 			                        <div class="form-group">
 			                        	<label class="sr-only" for="form-last-name">Last name</label>
-			                        	<input type="text" name="pwd" placeholder="输入您的密码" class="form-last-name form-control" id="form-last-name">
+			                        	<input type="password" name="pwd" placeholder="输入您的密码" class="form-last-name form-control" id="form-last-name">
                                     </div>
 			                        <button type="submit" class="btn">点击登录</button>
 			                    </form>
