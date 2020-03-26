@@ -16,16 +16,6 @@ class IndexController extends Controller
         $name=$_POST['name'];
         $pwd=$_POST['pwd'];
     }
-<<<<<<< HEAD
-    public function ajaxre($user_arr=[],$val=""){
-        $name=$_GET['name']??'';
-        if($name==1){
-            echo '2';
-        }
-        $uid=request()->input('user_id')??'';
-        if($uid&&$val){
-            echo '1';
-=======
     public function ajaxre($val=''){
         // $name=$_GET['name']??'';
         // if($name==1){
@@ -34,7 +24,6 @@ class IndexController extends Controller
         $uid=request()->input('user_id')??'';
         if ($uid&&$val) {
             echo $val;
->>>>>>> 1deed11d61f5b94f6d342bb39ca4298256baf3a8
         }
     }
     //登录展示页面
@@ -73,12 +62,8 @@ class IndexController extends Controller
         $user_url='https://api.weixin.qq.com/sns/userinfo?access_token='.$token.'&openid='.$openid.'&lang=zh_CN';
         $user_get=file_get_contents($user_url);
         $user_arr=json_decode($user_get,true);
-<<<<<<< HEAD
-        $this->ajaxre($user_arr,1);
-=======
         $val=$this->val();
         $this->ajaxre($val);
->>>>>>> 1deed11d61f5b94f6d342bb39ca4298256baf3a8
         return view('index.loglist');
     }
     public function val(){
