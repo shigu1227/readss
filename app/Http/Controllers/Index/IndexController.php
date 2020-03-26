@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use QRcode;
 use App\Model\erweima as Er;
 use App\Model\UserModel as User;
+use Illuminate\Support\Facades\Redis;
+
 class IndexController extends Controller
 {
     //首页
@@ -39,8 +41,8 @@ class IndexController extends Controller
         }
     }
     public function ajaxre($arr=[]){
-       $uid=request()->input('user_id')??"";
-       echo $uid;
+       $str=Redis::get('str');
+       echo $str??'';
     }
     //登录展示页面
     public function loginlist(){
@@ -79,7 +81,7 @@ class IndexController extends Controller
         $user_get=file_get_contents($user_url);
         $user_arr=json_decode($user_get,true);
         Er::insert(['e_status'=>1,'e_uid'=>$user_arr['openid']]);
-        session(['name'=>1]);
+        Redis::set('str',1);
         return view('index.loglist');
     }
     public function val(){
