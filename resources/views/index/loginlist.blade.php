@@ -96,7 +96,7 @@
     }
     function getstatus(){
         $.ajax({
-            url:"{{url('login')}}",
+            url:"{{url('index/ajaxre')}}",
             data:{user_id:"{{$userid}}"},
             type:"GET",
             success:function(res){
