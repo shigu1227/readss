@@ -7,7 +7,7 @@
     <title>确认登录</title>
 </head>
 <body>
-        <form action="{{url('index/ajaxre')}}" method="post">
+        <form action="{{url('index/ajaxre')}}" method="get">
             @csrf
             <input type="hidden" name="name" value="1">
             <input type="submit" value="点击确认登录">

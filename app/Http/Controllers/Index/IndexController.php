@@ -17,18 +17,22 @@ class IndexController extends Controller
         $pwd=$_POST['pwd'];
     }
     public function ajaxre($user_arr=[]){
+        $uid=request()->input('user_id')??'';
+        if($uid){
+            echo '1';
+        }
         $name=$_POST['name']??'';
         if($name==1){
-            echo '3';
+            echo '2';
         }
-        echo '1';
+       
         
        
     }
     //登录展示页面
     public function loginlist(){
-        $this->wxre();
-        return view('index.loginlist');
+        $uid=$this->wxre();
+        return view('index.loginlist',['userid'=>$uid]);
     }
     //微信二维码生成
     public function wxre(){
@@ -37,7 +41,8 @@ class IndexController extends Controller
       $obj = new QRcode();
       $uid=uniqid();
       $url_s="http://read.bianaoao.top/imag?uid=".$uid;
-      $obj->png($url_s,storage_path('app/public/1.png')); 
+      $obj->png($url_s,storage_path('app/public/1.png'));
+      return $uid; 
     }
 
 
