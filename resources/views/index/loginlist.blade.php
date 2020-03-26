@@ -36,14 +36,15 @@
                     <div class="row">
                            
                     	<div class="col-sm-6 text">
-                                <h1>微信扫描登录</h1>
-                    		<img style="width:230px" src="{{url('./storage/1.png')}}" alt="">
+                                <h1>微信扫描登录 </h1>
+                            <img style="width:230px" class="images" src="{{url('./storage/1.png')}}" alt="">
+                            <div><p class="shixiao"></p><span class="content"></span></div>
                     	</div>
                         <div class="col-sm-5 form-box">
                         	<div class="form-top">
                         		<div class="form-top-left">
                         			<h3>欢迎您登录</h3>
-                            		<p>Fill in the form below to get instant access:</p>
+                            		<h4>还没有账号点击<a href="">注册</a></h4>
                         		</div>
                             </div>
                             <div class="form-bottom">
@@ -64,7 +65,6 @@
                     </div>
                 </div>
             </div>
-            
         </div>
 
 
@@ -74,11 +74,48 @@
         <script src="/assets/js/jquery.backstretch.min.js"></script>
         <script src="/assets/js/retina-1.1.0.min.js"></script>
         <script src="/assets/js/scripts.js"></script>
-        
-        <!--[if lt IE 10]>
-            <script src="/assets/js/placeholder.js"></script>
-        <![endif]-->
-
     </body>
-
 </html>
+<script>
+    $(function(){
+        setInterval(shixiao,1000);
+        time=60;
+        setInterval(getstatus,1000);
+    })
+    function shixiao(){
+        if(time>0){
+            var str = "二维码"+time+"s 后失效，请尽快操作";
+            $('.shixiao').html(str);
+            time --;
+        }else{
+            $('.images').attr('src',"{{url('./storage/2.png')}}");
+            $(".content").html('');
+            var str = "二维码已经失效，请点击图片重新获取";
+            $('.shixiao').html(str);
+        }
+    }
+    function getstatus(){
+        $.ajax({
+            url:"{{url('index/ajaxre')}}",
+            data:{user_id:1},
+            type:"GET",
+            success:function(res){
+                var str = "";
+                if(res==0){
+                    str += "等待扫描"
+                }else if(res==1){
+                    $('.images').attr('src',"{{url('./storage/3.png')}}");
+                    str += "扫码成功，等待授权";
+
+                }else if(res==2){
+                    str +="等待跳转";
+                    location.href="{{url('/')}}";
+                }
+                $('.content').html(str);
+            }
+        })
+    }
+    $('.images').click(function(){
+        history.go(0)
+    })
+</script>

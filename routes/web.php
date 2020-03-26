@@ -22,3 +22,5 @@ Route::get('imag','Index\IndexController@imag');
 Route::get('wx','Index\IndexController@wx');
 Route::get('index/login','Index\IndexController@loginlist');
 Route::post('index/logins','Index\IndexController@logins');
+Route::get('index/ajaxre','Index\IndexController@ajaxre');
+

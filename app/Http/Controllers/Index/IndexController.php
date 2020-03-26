@@ -8,7 +8,7 @@ use QRcode;
 
 class IndexController extends Controller
 {
-    //二维码展示页面
+    //首页
     public function index(){
         return view('index.index');
     }
@@ -16,7 +16,22 @@ class IndexController extends Controller
         $name=$_POST['name'];
         $pwd=$_POST['pwd'];
     }
+    public function ajaxre($user_arr){
+        $name=$_POST['name']??'';
+        if($name==1){
+            echo '3';
+        }
+        if(empty($user_arr)){
+            return;
+        }else{
+            echo '1';
+        return view('index.loglist');
+        }
+       
+    }
+    //登录展示页面
     public function loginlist(){
+        $this->wxre();
         return view('index.loginlist');
     }
     //微信二维码生成
@@ -49,7 +64,7 @@ class IndexController extends Controller
         $user_url='https://api.weixin.qq.com/sns/userinfo?access_token='.$token.'&openid='.$openid.'&lang=zh_CN';
         $user_get=file_get_contents($user_url);
         $user_arr=json_decode($user_get,true);
-        dump($user_arr);
+        $this->ajaxre($user_arr);
     }
     //微信接口配置
     public function wx(){
