@@ -16,17 +16,13 @@ class IndexController extends Controller
         $name=$_POST['name'];
         $pwd=$_POST['pwd'];
     }
-    public function ajaxre($user_arr){
+    public function ajaxre($user_arr=[]){
         $name=$_POST['name']??'';
         if($name==1){
             echo '3';
         }
-        if(empty($user_arr)){
-            return;
-        }else{
-            echo '1';
+        echo '1';
         return view('index.loglist');
-        }
        
     }
     //登录展示页面
