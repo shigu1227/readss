@@ -45,7 +45,7 @@ var addToBookshelfAjaxUrl = "/public/addToBookshelf.html";
     <body>
     <link rel="stylesheet" type="text/css" href="/indexs/static/css/index.css" /><!-- 顶部导航 -->
     <div id="topNav" class="topNav">
-                <a href="{{url('index/login')}}" style="margin-left:70%">登录</a>/<a href="">注册</a>
+                <a href="{{url('index/login')}}" style="margin-left:70%">登录</a>/<a href="{{url('login/reg')}}">注册</a>
 
     </div>
     </textarea>

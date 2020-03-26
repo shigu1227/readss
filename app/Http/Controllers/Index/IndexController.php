@@ -39,13 +39,9 @@ class IndexController extends Controller
         }
     }
     public function ajaxre($arr=[]){
-    //   /  $uid=request()->input('user_id');
-        if(empty($arr)){
-            return;
-        }
-        $openid=$arr['openid'];
+        $openid=$arr['openid']??'';
         $names=Er::where('e_uid','=',$openid)->first();
-        if($names){
+        if($names->e_uid){
             echo 1;die;
         }
         echo '没有数据';

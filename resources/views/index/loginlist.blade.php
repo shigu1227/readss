@@ -106,7 +106,6 @@
                 }else if(res==1){
                     $('.images').attr('src',"{{url('./storage/3.png')}}");
                     str += "扫码成功，等待授权";
-
                 }else if(res==2){
                     str +="等待跳转";
                     location.href="{{url('/')}}";
