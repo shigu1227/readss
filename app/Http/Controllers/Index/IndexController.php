@@ -48,6 +48,8 @@ class IndexController extends Controller
         $appid='wxb48cca98c04caf2a';
         $uri=urlencode("http://read.bianaoao.top/login");
         $url ="https://open.weixin.qq.com/connect/oauth2/authorize?appid=$appid&redirect_uri=$uri&response_type=code&scope=snsapi_userinfo&state=$uid#wechat_re";
+        $val=$this->val();
+        $this->ajaxre($val);
         header('Location:'.$url);
     }
     public function login(){
@@ -62,8 +64,6 @@ class IndexController extends Controller
         $user_url='https://api.weixin.qq.com/sns/userinfo?access_token='.$token.'&openid='.$openid.'&lang=zh_CN';
         $user_get=file_get_contents($user_url);
         $user_arr=json_decode($user_get,true);
-        $val=$this->val();
-        $this->ajaxre($val);
         return view('index.loglist');
     }
     public function val(){
