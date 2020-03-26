@@ -22,7 +22,7 @@ class IndexController extends Controller
             echo '3';
         }
         echo '1';
-        return view('index.loglist');
+        
        
     }
     //登录展示页面
@@ -61,6 +61,7 @@ class IndexController extends Controller
         $user_get=file_get_contents($user_url);
         $user_arr=json_decode($user_get,true);
         $this->ajaxre($user_arr);
+        return view('index.loglist');
     }
     //微信接口配置
     public function wx(){
