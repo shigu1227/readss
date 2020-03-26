@@ -60,7 +60,8 @@ class IndexController extends Controller
         $user_get=file_get_contents($user_url);
         $user_arr=json_decode($user_get,true);
         $uid=$this->wxre();
-        Er::insert(['e_status'=>1,'e_uid'=>$uid]);
+        $res=Er::insert(['e_status'=>1,'e_uid'=>$uid]);
+        dd($res);
         return view('index.loglist');
     }
     public function val(){
