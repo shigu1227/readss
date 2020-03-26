@@ -17,14 +17,9 @@ class IndexController extends Controller
         $pwd=$_POST['pwd'];
     }
     public function ajaxre($val=''){
-        // $name=$_GET['name']??'';
-        // if($name==1){
-        //     echo '2';
-        // }
-        $uid=request()->input('user_id')??'';
-        if ($uid&&$val) {
-            echo $val;
-        }
+        $name=$_GET['name']??'';
+        echo $name;
+     
     }
     //登录展示页面
     public function loginlist(){
@@ -48,8 +43,6 @@ class IndexController extends Controller
         $appid='wxb48cca98c04caf2a';
         $uri=urlencode("http://read.bianaoao.top/login");
         $url ="https://open.weixin.qq.com/connect/oauth2/authorize?appid=$appid&redirect_uri=$uri&response_type=code&scope=snsapi_userinfo&state=$uid#wechat_re";
-        $val=$this->val();
-        $this->ajaxre($val);
         header('Location:'.$url);
     }
     public function login(){

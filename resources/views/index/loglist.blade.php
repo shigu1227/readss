@@ -9,7 +9,7 @@
 <body>
         <form action="{{url('index/ajaxre')}}" method="get">
             @csrf
-            <input type="hidden" name="name" value="1">
+            <input type="hidden" name="name" value="2">
             <input type="submit" value="点击确认登录">
         </form>
 </body>
