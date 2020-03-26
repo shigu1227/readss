@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use QRcode;
 use App\Model\erweima as Er;
+use App\Model\UserModel as User;
 class IndexController extends Controller
 {
     //首页
@@ -15,6 +16,27 @@ class IndexController extends Controller
     public function logins(){
         $name=$_POST['name'];
         $pwd=$_POST['pwd'];
+        if($name==null){
+            echo '手机号不能为空,正在为您跳转。。。';
+            header("refresh:2,url='/index/login'");
+            die;
+        }
+        $data=User::where('user_tel','=',$name)->first();
+        if(empty($data)){
+            echo '用户名不存在,正在为您跳转。。。';
+            header("refresh:2,url='/index/login'");
+            die;
+        }else{
+            if($data->user_pwd==$pwd){
+                echo '登录成功,正在为您跳转。。。';
+                header("refresh:2,url='/'");
+                die;
+            }else{
+                echo '密码不正确,正在为您跳转。。。';
+                header("refresh:2,url='/index/login'");
+                die;
+            }
+        }
     }
     public function ajaxre($arr=[]){
     //   /  $uid=request()->input('user_id');
