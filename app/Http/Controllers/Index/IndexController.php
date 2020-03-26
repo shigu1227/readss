@@ -22,7 +22,7 @@ class IndexController extends Controller
             echo '2';
         }
         $uid=request()->input('user_id')??'';
-        if($uid){
+        if($uid&&$user_arr['openid']){
             echo '1';
         }
     }
