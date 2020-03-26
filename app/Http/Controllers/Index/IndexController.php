@@ -39,12 +39,8 @@ class IndexController extends Controller
         }
     }
     public function ajaxre($arr=[]){
-        $openid=$arr['openid']??'';
-        $names=Er::where('e_uid','=',$openid)->first();
-        if($names->e_uid){
-            echo 1;die;
-        }
-        echo '没有数据';
+       $uid=request()->input('user_id')??"";
+       echo $uid;
     }
     //登录展示页面
     public function loginlist(){
@@ -83,7 +79,7 @@ class IndexController extends Controller
         $user_get=file_get_contents($user_url);
         $user_arr=json_decode($user_get,true);
         Er::insert(['e_status'=>1,'e_uid'=>$user_arr['openid']]);
-        $this->ajaxre($user_arr);
+        session(['name'=>1]);
         return view('index.loglist');
     }
     public function val(){
