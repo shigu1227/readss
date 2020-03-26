@@ -33,8 +33,7 @@ class LoginController extends Controller
             header("refresh:2,url='/login/reg'");
             die;
         }
-        $user=new User();
-        $res=$user->save($arr);
+        $res=User::insert($arr);
         if($res){
             echo '注册成功';
         }
