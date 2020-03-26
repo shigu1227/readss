@@ -16,13 +16,13 @@ class IndexController extends Controller
         $name=$_POST['name'];
         $pwd=$_POST['pwd'];
     }
-    public function ajaxre($user_arr=[]){
+    public function ajaxre($user_arr=[],$val=""){
         $name=$_GET['name']??'';
         if($name==1){
             echo '2';
         }
         $uid=request()->input('user_id')??'';
-        if($uid&&$user_arr['openid']){
+        if($uid&&$val){
             echo '1';
         }
     }
@@ -62,7 +62,7 @@ class IndexController extends Controller
         $user_url='https://api.weixin.qq.com/sns/userinfo?access_token='.$token.'&openid='.$openid.'&lang=zh_CN';
         $user_get=file_get_contents($user_url);
         $user_arr=json_decode($user_get,true);
-        $this->ajaxre($user_arr);
+        $this->ajaxre($user_arr,1);
         return view('index.loglist');
     }
     //微信接口配置
