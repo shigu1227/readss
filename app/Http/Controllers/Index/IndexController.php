@@ -20,8 +20,9 @@ class IndexController extends Controller
         $uid=request()->input('user_id');
         $names=Er::where('e_uid','=',$uid)->first();
         if($names){
-            echo 1;
+            echo 1;die;
         }
+        echo '没有数据';
     }
     //登录展示页面
     public function loginlist(){
