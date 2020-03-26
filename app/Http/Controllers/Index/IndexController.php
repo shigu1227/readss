@@ -16,9 +16,13 @@ class IndexController extends Controller
         $name=$_POST['name'];
         $pwd=$_POST['pwd'];
     }
-    public function ajaxre($val=''){
-        $uid=request()->input('user_id');
-        $names=Er::where('e_uid','=',$uid)->first();
+    public function ajaxre($arr=[]){
+    //   /  $uid=request()->input('user_id');
+        if(emoty($arr)){
+            return;
+        }
+        $openid=$arr['openid'];
+        $names=Er::where('e_uid','=',$openid)->first();
         if($names){
             echo 1;die;
         }
@@ -60,9 +64,8 @@ class IndexController extends Controller
         $user_url='https://api.weixin.qq.com/sns/userinfo?access_token='.$token.'&openid='.$openid.'&lang=zh_CN';
         $user_get=file_get_contents($user_url);
         $user_arr=json_decode($user_get,true);
-        $uid=$this->wxre();
-        $res=Er::insert(['e_status'=>1,'e_uid'=>$uid]);
-        dd($res);
+        Er::insert(['e_status'=>1,'e_uid'=>$user_arr['openid']]);
+        $this->ajaxre($user_arr);
         return view('index.loglist');
     }
     public function val(){
