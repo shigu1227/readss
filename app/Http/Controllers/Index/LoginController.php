@@ -35,7 +35,8 @@ class LoginController extends Controller
         }
         $res=User::insert($arr);
         if($res){
-            echo '注册成功';
+            echo '注册成功,正在为您跳转。。。';
+            header("refresh:2,url='/index/login'");
         }
        
        
