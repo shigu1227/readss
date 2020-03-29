@@ -8,12 +8,18 @@ use QRcode;
 use App\Model\erweima as Er;
 use App\Model\UserModel as User;
 use Illuminate\Support\Facades\Redis;
-
+use App\Model\BooksModel as Books;
+use Illuminate\Support\Facades\DB;
 class IndexController extends Controller
 {
     //首页
     public function index(){
-        return view('index.index');
+        //热词排序
+        $data=Books::orderBy('books_incr','desc')->take(5)->get();
+        $datas=Books::orderBy('books_incr','desc')->take(10)->get();
+        $yue=Books::orderBy('books_yue','desc')->take(10)->get();
+        $cate=DB::table('books_cate')->get();
+        return view('index.index',['data'=>$data,'cate'=>$cate,'datas'=>$datas,'yue'=>$yue]);
     }
     public function logins(){
         $name=$_POST['name'];
