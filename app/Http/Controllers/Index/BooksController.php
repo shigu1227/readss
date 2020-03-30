@@ -38,4 +38,14 @@ class BooksController extends Controller
         }
         return view('books.suolist',['data'=>$data]);
     }
+
+    //月票投票
+    public function yue(){
+        $yue=$_GET['books_yue'];
+        $res=Books::where('books_id','=',$yue)->increment('books_yue');
+        if($res){
+            echo '投票成功，正在为您跳转书籍详情页面';
+            header("refresh:2,url='/'");
+        }
+    }
 }

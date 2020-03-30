@@ -286,7 +286,7 @@
                     @foreach ($yue as $v)
                     <li class="firstList">
                         <div class="hoverHide">
-                            <em>14024</em>
+                            <em>{{$v->books_yue}}</em>
                             <span class="num3">@php
                                     echo $i;
                                 @endphp</span>
